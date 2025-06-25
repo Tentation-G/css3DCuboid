@@ -1,28 +1,28 @@
-@charset "UTF-8";
 body {
+  margin: 0;
+  height: 100vh;
   background-color: rgb(252, 193, 106);
 }
 
 .wrapper-center {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-/* Conteneur avec perspective */
 .scene {
-  background-color: bisque;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 300px;
   height: 300px;
+  background-color: bisque;
+  perspective: 800px;
 }
-
-.little-scene {
-  background-color: rgb(59, 33, 1);
+.scene .little-scene {
+  background-color: aquamarine;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,80 +30,66 @@ body {
   height: 200px;
   perspective: 800px;
 }
-
-/* Pavé en lui-même */
-.cube {
+.scene .little-scene .cube {
+  position: absolute;
   width: 200px;
   height: 200px;
-  position: absolute;
   transform-style: preserve-3d;
-  /* 1) On place l'origine de rotation sur l'arête gauche (milieu hauteur) */
   transform-origin: 0% 50%;
-  /* 2) On applique la rotation */
   transform: rotateY(0deg);
   transition: transform 1s ease;
 }
-
-.scene:hover .cube {
-  transform: rotateY(-130deg);
-}
-
-/* Styles communs à toutes les faces */
-.face {
+.scene .little-scene .cube .face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
   text-align: center;
   line-height: 1;
-  /* on gère la hauteur dans chaque face */
-  border: 2px solid rgb(255, 255, 255);
+  border: 2px solid #fff;
 }
-
-.front,
-.back {
+.scene .little-scene .cube .front,
+.scene .little-scene .cube .back {
   width: 200px;
   height: 200px;
 }
-
-.front {
+.scene .little-scene .cube .front {
+  background: rgb(0, 0, 0);
   transform: translateZ(10px);
-  background: rgb(0, 0, 0);
 }
-
-.back {
+.scene .little-scene .cube .back {
+  background: rgb(0, 0, 0);
   transform: rotateY(180deg) translateZ(10px);
-  background: rgb(0, 0, 0);
 }
-
-.right,
-.left {
+.scene .little-scene .cube .right,
+.scene .little-scene .cube .left {
   width: 20px;
   height: 200px;
 }
-
-.right {
-  transform: rotateY(90deg) translateZ(190px);
+.scene .little-scene .cube .right {
   background: rgb(255, 0, 0);
+  transform: rotateY(90deg) translateZ(190px);
 }
-
-.left {
-  transform: rotateY(-90deg) translateZ(10px);
+.scene .little-scene .cube .left {
   background: rgb(0, 255, 0);
+  transform: rotateY(-90deg) translateZ(10px);
 }
-
-.top,
-.bottom {
+.scene .little-scene .cube .top,
+.scene .little-scene .cube .bottom {
   width: 200px;
   height: 20px;
 }
-
-.top {
+.scene .little-scene .cube .top {
+  background: rgba(25, 0, 255, 0.6);
   transform: rotateX(90deg) translateZ(10px);
-  background: rgb(25, 0, 255);
 }
-
-.bottom {
-  transform: rotateX(-90deg) translateZ(190px);
+.scene .little-scene .cube .bottom {
   background: rgba(255, 0, 255, 0.6);
+  transform: rotateX(-90deg) translateZ(190px);
+}
+.scene:hover .little-scene .cube {
+  transform: rotateY(-130deg);
 }/*# sourceMappingURL=main.css.map */
