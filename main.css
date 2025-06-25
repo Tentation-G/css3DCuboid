@@ -1,0 +1,109 @@
+@charset "UTF-8";
+body {
+  background-color: rgb(252, 193, 106);
+}
+
+.wrapper-center {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteneur avec perspective */
+.scene {
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+
+.little-scene {
+  background-color: rgb(59, 33, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  perspective: 800px;
+}
+
+/* Pavé en lui-même */
+.cube {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  transform-style: preserve-3d;
+  /* 1) On place l'origine de rotation sur l'arête gauche (milieu hauteur) */
+  transform-origin: 0% 50%;
+  /* 2) On applique la rotation */
+  transform: rotateY(0deg);
+  transition: transform 1s ease;
+}
+
+.scene:hover .cube {
+  transform: rotateY(-130deg);
+}
+
+/* Styles communs à toutes les faces */
+.face {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  line-height: 1;
+  /* on gère la hauteur dans chaque face */
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.front,
+.back {
+  width: 200px;
+  height: 200px;
+}
+
+.front {
+  transform: translateZ(10px);
+  background: rgb(0, 0, 0);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(10px);
+  background: rgb(0, 0, 0);
+}
+
+.right,
+.left {
+  width: 20px;
+  height: 200px;
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(190px);
+  background: rgb(255, 0, 0);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(10px);
+  background: rgb(0, 255, 0);
+}
+
+.top,
+.bottom {
+  width: 200px;
+  height: 20px;
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(10px);
+  background: rgb(25, 0, 255);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(190px);
+  background: rgba(255, 0, 255, 0.6);
+}/*# sourceMappingURL=main.css.map */
